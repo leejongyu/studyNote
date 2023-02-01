@@ -1,0 +1,21 @@
+script에 추가
+
+    <script
+        src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+
+
+js에 추가
+
+   // 주소 찾기 기능
+    const btnAddress = document.querySelector('#btnAddress');
+
+    btnAddress.addEventListener('click', function() {
+
+        new daum.Postcode({
+            oncomplete: function(data) {
+                document.getElementById("address").value = data.address; // 주소 넣기
+                document.querySelector('#address2').focus(); //상세입력 포커싱
+            }
+
+        }).open();
+    });
