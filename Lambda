@@ -1,0 +1,32 @@
+Lambda expression : 클래스 정의와 객체 생성을 동시에 하는 익명 클래스를 간단히 작성하기 위한 문법. (함수 표기법)
+                   > 함수형 인터페이스만 람다 표현식으로 작성할 수 있음. 
+                   > 함수형 인터페이스 : 추상 메서드를 오직 한 개만 갖는 인터페이스.
+                     >> 구현하고자 하는 메서드가 1개일 때, 익명 클래스를 간단하게 표기함
+                     >>> Interface 변수이름 = (파라미터) -> (return 원하는 수식 ;} ;
+
+ex 1) 파라미터 2개를 통해 호출하는 함수형 interface  생성
+    @FunctionalInterface
+    public interface Calculable {
+        double calculate(double x, double y);
+    }
+
+
+ex 2) 익명클래스 생성방법.
+
+    Calculable adder = new Calculable(){ // 익명클래스 생성
+
+      @Override // 함수형 interface의 추상메서드 calculate를 override 하여 사용
+      public double calculate(double x, double y) {
+        return x + y;
+      }
+
+    }
+
+ex 3) 람다 표현식 사용방법 1.
+
+    Calculable multiplier = (x,y) -> {return x * y; );
+    //Interface 변수이름 = (파라미터) -> (return 원하는 수식 ;} ;
+    
+ex 4) 람다 표현식 사용방법 2. 표현식의 body가 return 문장만 있는 경우 {}와 return 키워드도 생략 가능
+    
+    Calculable devider = (x,y) = x/y;
