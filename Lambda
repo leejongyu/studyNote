@@ -4,8 +4,8 @@ Lambda expression : 클래스 정의와 객체 생성을 동시에 하는 익명
                      >> 구현하고자 하는 메서드가 1개일 때, 익명 클래스를 간단하게 표기함
                      >>> Interface 변수이름 = (파라미터) -> (return 원하는 수식 ;} ;
 
-ex 1) 파라미터 2개를 통해 호출하는 함수형 interface  생성
-    @FunctionalInterface
+ex 1) 파라미터 2개를 통해 호출하는 함수형 interface 생성
+    @FunctionalInterface // 구현할 추상 메서드가 오직 한 개만 있는 인터페이스. 만약, 해당 애너테이션을 가진 함수에 2개 이상의 메서드가 선언되면 오류 발생.
     public interface Calculable {
         double calculate(double x, double y);
     }
