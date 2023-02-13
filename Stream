@@ -43,7 +43,7 @@ Stream :  array 또는 collection 객체에 저장된 원소들을 처리하는 
   4) Stream.builder()
    > 배열, 컬렉션 등을 통해서 생성하는것이 아니라 직접 값을 입력해서 객체를 생성
     > Stream<입력할 값들의 데이터타입> stream이름 = Stream<데이터타입>builder().add(데이터).add(데이터)......build();
-    > Stream<Integer> streamBuilder = Stream<Integer>builfer().add(1).add(2).add(3).build();
+    > Stream<Integer> streamBuilder = Stream.<Integer>builder().add(1).add(2).add(3).build();
     
   5) Stream.generate()
    > 데이터를 생성하는 람다식을 이용하여 스트림을 생성할 수 있다.
@@ -82,14 +82,45 @@ Stream :  array 또는 collection 객체에 저장된 원소들을 처리하는 
     > Stream<Integer> streamIterte = Stream.iterate(n, n-> n*2).limit(5);
       System.out.println(iteratedStream.toList());
       result = > n 값이 2라면 2, 4, 8, 16, 32를 return;
+      
+  7-1) Stream(generic)
+   > 기본 타입의 스트림을 생성
+    > IntStream intStream = Intstream.range(1,5); // [1,2,3,4]를 원소로 갖는 int stream
+    > LongStream LongStream = Longstream.rangeClosed(1,5); // [1,2,3,4,5]를 원소로 갖는 long stream
+    > Stream<Integer> boxStream = IntStream.range(1,5).boxed(); // boxing을 하려면 제네릭을 이용해야함.
+    > DoubleStream DoubleStream = new Random().doubles(7, 1, 10); // 1~10 범위의 double형 난수 7개 생
 
-
-
-
-
-
+  7-2) Stream(String)
+   > 문자열 타입의 스트림을 생성
+    > Stream<String> stringStream = Stream.<String>builder().add().build();
+    > Stream<String> stringStream = Pattern.compile(",").splitAsStream("A,B,C"); // [A,B,C]
+    > IntStream stream = "String".chars(); // [83,116,114,105,110,103] / 해당 문자열을 이루고 있는 문자들의 아스키코드 값을 저장
+    
+  8) File Stream
+   > 텍스트 파일을 라인 단위로 처리하는 코드
+    > Stream<String> textStream = Files.lines(Paths.get("test.txt"), Charset.forName("UTF-8"));
+  
+  9) Parallel Stream
+   > 스트림 생성 시 Stream 대신 parrallelStream 메서드를 생성하여 생성
+    >> 단, parallel stream 의 오버헤드가 stream 보다 훨씬 크기 때문에, 이를 뛰어 넘을 정도로 병렬 처리가 효율적인 작업인 경우(ex. 처리할 list 사이즈가 굉장히 커서 직렬 처리보다 병렬 처리가 훨씬 유리한 경우 등)에만 써야한다.
+   
+   (1) collect 메서드 : <R> R collect(Supplier<R> supplier,
+                                      BiConsumer<R, ? super T> accumulator,
+                                      BiConsumer<R, R> combiner);
+       > collect의 메서드의 return은 R 타입이고, input list의 타입은 T(? super T)이다.
+        따라서, 이 collect 메서드의 작동 방식은 3단계로 진행된다.
+        1) supplier로 R타입 객체를 생성
+        2) 생성한 R타입 객체에 accumulator로 T list들을 합친다. (R타입 객체에 T list의 원소들을 하나하나 축적해간다.)
+        3) (parallel stream의 경우) 여러 스레드가 부분적으로 1, 2를 실행해가면서 얻어낸 R타입 결과물을 combinder를 이용하여 하나로 합친다.
+        
+   
+   
+  
+  
+  
 
 ref
  > https://ksr930.tistory.com/237/
  > https://hbase.tistory.com/171/
  > https://futurecreator.github.io/2018/08/26/java-8-streams/
+ > blog.naver.com/PostView.naver?isHttpsRedirect=true&blogId=woong17&logNo=221268337085
