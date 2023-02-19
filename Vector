@@ -12,3 +12,4 @@ for i in range(5):
     int nx = x + dx[i];
     int ny = y + dy[i];
     sysout(nx + " , " + ny);
+ 
