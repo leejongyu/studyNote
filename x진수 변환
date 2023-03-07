@@ -1,0 +1,5 @@
+java.lang.Integer의 toBinaryString(), toOctalString(), toHexaString() 메소드를 이용하여 
+                   2진수 = toBinaryString(int i), 
+                   8진수 = toOctalString(int i)
+                   16진수 = toHexaString(int i) 문자열로 변환할 수 있음.
+                   
