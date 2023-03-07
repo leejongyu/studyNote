@@ -1,0 +1,26 @@
+1. String은 불변(immutable)하다.
+ > String 객체는 한 번 생성되면 변경될 수 없는 불변(immutable) 객체. 
+  이는 String이 생성되면 그 내용이 변경될 수 없다는 의미이다. 
+  예를 들어, String str = "hello"; 라는 코드를 실행하면 메모리 내에 "hello"라는 문자열이 생성. 
+  이후 str 변수가 다른 문자열을 참조하도록 바꾼다고 하더라도 기존에 생성된 "hello" 문자열은 변하지 않음. 
+  따라서 문자열을 수정하는 경우에는 새로운 String 객체를 생성하거나 StringBuilder나 StringBuffer와 같은 가변(mutable) 클래스를 사용해야 함.
+
+2. char 배열은 문자열 처리에 유용하다.
+ > char 배열은 여러 개의 문자(char)를 담을 수 있는 배열. 
+  String과는 달리 가변(mutable)이기 때문에 수정이 가능. 
+  따라서 문자열 처리에 필요한 기능을 직접 구현할 때는 char 배열을 사용하는 경우가 많음. 
+  예를 들어, 문자열 내의 특정 문자를 찾거나 문자열을 역순으로 바꾸는 등의 작업에서 char 배열을 사용할 수 있음.
+
+
+String 변수를 char로 변형하는 방법
+
+1. char c = String.charAt(int i); : String type의 변수에서 i번째 index(i번째 문. 첫번째 문자는 0번째로 계산됨)의 문자를 char 변수인 c에 저장.
+  > ex) String str = "abcde";
+        char c = str.charAt(3); // c = 'd'
+
+2. char[] cArr = String.toCharArray(); : 각 문자열들을 char의 배열에 저장.
+  > ex) String str = "abcde";
+        char[] cArr = str.toCharArray(); // cArr = ['a','b','c','d','e']
+
+
+String 변수를 char을 이용하여 다루는 방법
