@@ -1,7 +1,7 @@
 java.lang.Integer의 toBinaryString(), toOctalString(), toHexaString() 메소드를 이용하여 
-                   2진수 = toBinaryString(int i), 
-                   8진수 = toOctalString(int i)
-                   16진수 = toHexaString(int i) 문자열로 변환할 수 있음.
+                   2진수 = Integer.toBinaryString(int i), 
+                   8진수 = Integer.toOctalString(int i)
+                   16진수 = Integer.toHexaString(int i) 문자열로 변환할 수 있음.
                    
 java.lang.Integer의 Integer.parseInt() 메소드를 이용하여 
                     Integer.parseInt("문자열 10진수") = > 문자열을 int로
