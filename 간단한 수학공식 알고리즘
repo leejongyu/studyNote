@@ -21,3 +21,30 @@ public static void factorization(int n) {
         }
     }
 }
+
+4. a / b가 유한소수인지 구하기 (최대공약수 응용)
+class Solution {
+    public int solution(int a, int b) {
+        int gcd = getGcd(a, b); // 최대공약수 구하기
+
+        while (gcd > 1) { // 기약분수로 만들기
+            a /= gcd; // 분자
+            b /= gcd; // 분모 
+            gcd = getGcd(a, b);
+        }
+
+        if (b % 2 == 0 || b % 5 == 0) { // 분모가 2와 5의 곱으로 이루어져 있는지 판별
+            return 1; // 유한소수
+        } else {
+            return 2; // 무한소수
+        }
+    }
+
+    private int getGcd(int a, int b) { // 최대공약수 구하기
+        if (b == 0) {
+            return a;
+        } else {
+            return getGcd(b, a % b);
+        }
+    }
+}
