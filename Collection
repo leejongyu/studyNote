@@ -50,7 +50,14 @@
         > node - leap 로 기준에 맞게 정렬하여 정리 
           // treeSet.iterator() = 오름차순
           
-          
+     (3) Set의 메서드
+    	1: 변수이름.add(E e): 새로운 원소 e를 추가합니다.
+     	2: remove(Object o): 원소 o를 삭제합니다.
+	3: contains(Object o): 원소 o가 Set에 있는지 확인합니다.
+	4: size(): Set에 있는 원소의 개수를 반환합니다.
+	5: isEmpty(): Set이 비어있는지 확인합니다.
+     
+     
 >> 3) Map : Key와 Value의 쌍으로 구성된 데이터를 저장하는 자료구조.
     (1) Key와 Value
      1. Key : 중복된 값을 가질수 없는, List의 index와 비슷한 역할을 수행
